@@ -45,7 +45,7 @@ class Bot(commands.Bot):
             print(f"Removed user {user_id} from safety mode!")
 
     # Checks user on top of heap every 30 seconds, then removes user if 60 minutes have passed.
-    @tasks.loop(seconds=30)
+    @tasks.loop(minutes=5)
     async def check_for_old_users(self):
         self.remove_old_users()
 
