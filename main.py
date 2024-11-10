@@ -2,16 +2,22 @@ import nextcord
 from nextcord.ext import commands, tasks
 import os
 from dotenv import load_dotenv
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import heapq
+from dataclasses import dataclass, field
 
 load_dotenv()
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
-
 # All Discord bots require "intents".
 intents = nextcord.Intents.default()
 intents.members = True  # Discord refers to "users" as "members".
 intents.message_content = True
+
+@dataclass
+class spam_detector:
+    spam_keywords: set[str] = field(default_factory=lambda:{
+        "@everyone,", "@here", "crypto", "nitro", "us citizen"
+    })
 
 class Bot(commands.Bot):
     def __init__(self, *args, **kwargs):
@@ -19,9 +25,9 @@ class Bot(commands.Bot):
         self.new_users = {}  # New users added here for 60 minutes, removed when time expires.
         self.new_users_heap = []  # Newest member on top of heap.
 
-        self.ping_spam_protection = {}
-        self.link_spam_protection = {}
-        self.monetary_spam_protection = {}
+        # Anti-spam protection dictionaries
+        self.spam_keywords = {"@everyone", "@here", "US Citizen", "ticket", "dollars", "money"}
+        self.SPAM_WEBHOOK = os.getenv("SPAM_WEBHOOK")
 
     # Stores data from "on_member_join" into "new_users" dictionary.
     def add_new_user(self, member):
@@ -29,7 +35,8 @@ class Bot(commands.Bot):
     
         self.new_users[member.id] = {
             "join_time": join_time,
-            "message_count": 0,  # Optionally track the number of messages
+            "message_count": 0,
+            "is_spammer": False,
         }
         # Adds user to "new_users_heap".
         heapq.heappush(self.new_users_heap, (join_time, member.id))
@@ -39,13 +46,17 @@ class Bot(commands.Bot):
     def remove_old_users(self):
         now = datetime.now(timezone.utc)
         # Compares join_time to 60 minutes after.
-        while self.new_users_heap and (now - self.new_users_heap[0][0]).total_seconds() > 3600:
+        while self.new_users_heap and (now - self.new_users_heap[0][0]).total_seconds() > 40:
             join_time, user_id = heapq.heappop(self.new_users_heap)
             del self.new_users[user_id]
             print(f"Removed user {user_id} from safety mode!")
+    
+    def is_spammer(self, message):
+        if "@everyone" in message.content or "@here" in message.content:
+            return True
 
     # Checks user on top of heap every 30 seconds, then removes user if 60 minutes have passed.
-    @tasks.loop(minutes=5)
+    @tasks.loop(seconds=30)
     async def check_for_old_users(self):
         self.remove_old_users()
 
