@@ -10,7 +10,9 @@ A. Spammer joins server:
 
 B. Discord user joins server:
 -> automatically added to probationary period.
+
 -> user sends a normal message like "hi", as their first message, they get removed from probationary period.
+
 -> This means they can previously restricted vocabulary. (links, emails, etc.)
 
 C. Non-talkative user joins server:
@@ -37,7 +39,7 @@ C. Non-talkative user joins server:
 -> Nextcord: Awesome wrapper for the discord api, makes things super easy.
 
 # Future Prospects
-1. Collect and showcase a public database of spammers, for research purpose.
+1. Collect and showcase a public database of spammers, research purposes.
 2. Gain some community owner feedback, seeing what they want.
 3. Make scalable code, attempting to cover some edge cases.
 
