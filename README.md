@@ -4,7 +4,7 @@
 
 I've made a few communities on WhatsApp and Discord, got some idea on the common trends they follow.
 
-# The Workflow
+# How it works:
 **A. Spammer joins server:**
   1. automatically added to probationary period.
   2. if their first message includes: links, emails, mentions cash, crypto, nitro, fake job hiring.
@@ -20,10 +20,7 @@ I've made a few communities on WhatsApp and Discord, got some idea on the common
   2. user doesn't send a message for 60 minutes...
   3. removed from probationary period, can use restricted vocabulary.
 
-# How it works:
-  1. New server members are stored in a hashmap and sorted in a heap based on how recently they joined.
-  2. We temporarily store: Discord ID, Timestamp, and whether they sent a message or not.
-  3. After 60 minutes OR if they've sent a non-spammy message, they get removed from probationary period and can send unrestricted messages.
+New server members are stored in a hashmap and sorted in a heap based on how recently they joined. We temporarily store: Discord ID, Timestamp, and whether they sent a message or not. After 60 minutes OR if they've sent a non-spammy message, they get removed from probationary period and can send unrestricted messages.
 
 # We use:
   1. Hashsets: Targetted toward obvious spammers, uses very little memory and space.
