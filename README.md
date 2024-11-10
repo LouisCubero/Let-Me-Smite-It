@@ -5,16 +5,12 @@ A discord bot that punishes spammers, without AI!
 # The Workflow
 A. Spammer joins server:
 -> automatically added to probationary period.
-
 -> if their first message includes: links, emails, mentions cash, crypto, nitro, fake job hiring.
-
 -> user gets kicked, message is logged for any false positives.
 
 B. Discord user joins server:
 -> automatically added to probationary period.
-
 -> user sends a normal message like "hi", as their first message, they get removed from probationary period.
-
 -> This means they can previously restricted vocabulary. (links, emails, etc.)
 
 C. Non-talkative user joins server:
