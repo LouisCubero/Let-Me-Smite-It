@@ -30,7 +30,7 @@ New server members are stored in a hashmap and sorted in a heap based on how rec
 
 # Future Prospects
   1. Collect and showcase a public database of spammers, research purposes.
-  2. Gain some community owner feedback, seeing what they want.
-  3. Make scalable code, attempting to cover some edge cases.
+  2. Gain community feedback, seeing what they want.
+  3. Write scalable code to cover edge cases.
 
 - This is still a work in progress, gonna gain feedback and make awesome features! -
