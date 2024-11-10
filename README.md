@@ -3,17 +3,17 @@
 **About:** Created a discord bot that punishes spammers, without AI! I hate spammers, they're composed of bots, people promoting their awful services, or online scammers. Made a few communities on WhatsApp and Discord, got some idea on the common trends they follow.
 
 # The Workflow
-A. Spammer joins server:
+**A. Spammer joins server:**
   1. automatically added to probationary period.
   2. if their first message includes: links, emails, mentions cash, crypto, nitro, fake job hiring.
   3. user gets kicked, message is logged for any false positives.
 
-B. Discord user joins server:
+**B. Discord user joins server:**
   1. automatically added to probationary period.
   2. user sends a normal message like "hi", as their first message, they get removed from probationary period.
   3. This means they can previously restricted vocabulary. (links, emails, etc.)
 
-C. Non-talkative user joins server:
+**C. Non-talkative user joins server:**
   1. automatically added to probationary period.
   2. user doesn't send a message for 60 minutes...
   3. removed from probationary period, can use restricted vocabulary.
