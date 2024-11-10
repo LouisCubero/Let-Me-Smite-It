@@ -20,7 +20,9 @@ C. Non-talkative user joins server:
 
 # How it works:
 -> New server members are stored in a hashmap and sorted in a heap based on how recently they joined.
+
 -> We temporarily store: Discord ID, Timestamp, and whether they sent a message or not.
+
 -> After 60 minutes OR if they've sent a non-spammy message, they get removed from probationary period and can send unrestricted messages.
 
 # We use:
