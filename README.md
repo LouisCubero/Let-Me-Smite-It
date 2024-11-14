@@ -1,6 +1,6 @@
 # Guilty Until Proven Innocent
 
-**About:** Creating a discord bot that punishes spammers, without AI! I hate spammers, they're composed of bots, people promoting their awful services, or online scammers. 
+**About:** Creating a discord bot that punishes spammers, without AI! I really hate spammers.
 
 I've made a few communities on WhatsApp and Discord, got some idea on the common trends they follow.
 
